@@ -1,73 +1,65 @@
-# Welcome to your Lovable project
+# Orbit Unity Vision
 
-## Project info
+**Unified Satellite Data Analysis Platform**
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+A hackathon project that unifies satellite data from **Sentinel** (ESA/Copernicus), **Landsat** (NASA/USGS), and **ISRO** (Bhuvan) into a single analytical interface with layered visualization, data fusion, and cross-source insights.
 
-## How can I edit this code?
+## The Problem
 
-There are several ways of editing your application.
+Satellite data is fragmented across agencies -- each with different formats, portals, and access methods. Analysts waste time switching between platforms instead of drawing insights.
 
-**Use Lovable**
+## Our Solution
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+Orbit Unity Vision provides a unified dashboard that:
 
-Changes made via Lovable will be committed automatically to this repo.
+- Overlays multi-source satellite imagery on a single interactive map
+- Fuses data from Sentinel, Landsat, and ISRO with adjustable layer opacity
+- Generates cross-satellite analytical insights (NDVI, elevation, temporal change)
+- Scales to support real satellite APIs when connected
 
-**Use your preferred IDE**
+## Tech Stack
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+- **Vite** + **React 18** + **TypeScript**
+- **Tailwind CSS** + **shadcn/ui** for UI components
+- **Leaflet.js** for interactive mapping
+- **Framer Motion** for smooth animations
+- **Recharts** for data visualization
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+## Getting Started
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+# Clone the repository
+git clone https://github.com/WiseTales/orbit-unity-vision.git
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# Navigate to the project
+cd orbit-unity-vision
 
-# Step 3: Install the necessary dependencies.
-npm i
+# Install dependencies
+npm install
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start the dev server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+## Project Structure
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```
+src/
+  components/    # Reusable UI components (map, panels, controls)
+  pages/         # Page-level components
+  services/      # API service layer (mock data / future real APIs)
+  types/         # TypeScript type definitions
+  hooks/         # Custom React hooks
+```
 
-**Use GitHub Codespaces**
+## Deployment
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Deploy to Vercel or any static hosting platform:
 
-## What technologies are used for this project?
+```sh
+npm run build
+```
 
-This project is built with:
+## License
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+MIT

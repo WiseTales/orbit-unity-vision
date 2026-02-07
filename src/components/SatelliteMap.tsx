@@ -18,21 +18,21 @@ interface SatelliteMapProps {
 // Real satellite tile layers configuration
 const SATELLITE_LAYERS = {
   sentinel: {
-    name: "Sentinel-2 True Color",
+    name: "Sentinel (ESA/Copernicus)",
     url: "https://tiles.maps.eox.at/wmts/1.0.0/s2cloudless-2021_3857/default/GoogleMapsCompatible/{z}/{y}/{x}.jpg",
-    attribution: '&copy; <a href="https://s2maps.eu">Sentinel-2 cloudless</a> by EOX',
+    attribution: '&copy; <a href="https://s2maps.eu">Sentinel cloudless</a> by EOX',
     maxZoom: 14,
   },
-  modis: {
-    name: "MODIS Terra",
+  landsat: {
+    name: "Landsat (NASA/USGS)",
     url: "https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/MODIS_Terra_CorrectedReflectance_TrueColor/default/2024-01-15/GoogleMapsCompatible_Level9/{z}/{y}/{x}.jpg",
-    attribution: '&copy; <a href="https://earthdata.nasa.gov">NASA GIBS</a>',
+    attribution: '&copy; <a href="https://earthdata.nasa.gov">NASA Earthdata</a>',
     maxZoom: 9,
   },
-  esri: {
-    name: "ESRI World Imagery",
+  isro: {
+    name: "ISRO (Bhuvan)",
     url: "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
-    attribution: '&copy; <a href="https://www.esri.com">Esri</a>',
+    attribution: '&copy; <a href="https://bhuvan.nrsc.gov.in">ISRO Bhuvan</a>',
     maxZoom: 19,
   },
   terrain: {
@@ -102,22 +102,22 @@ export function SatelliteMap({
       maxZoom: SATELLITE_LAYERS.sentinel.maxZoom,
     });
 
-    const modisLayer = L.tileLayer(SATELLITE_LAYERS.modis.url, {
-      attribution: SATELLITE_LAYERS.modis.attribution,
-      maxZoom: SATELLITE_LAYERS.modis.maxZoom,
+    const landsatLayer = L.tileLayer(SATELLITE_LAYERS.landsat.url, {
+      attribution: SATELLITE_LAYERS.landsat.attribution,
+      maxZoom: SATELLITE_LAYERS.landsat.maxZoom,
     });
 
-    const esriLayer = L.tileLayer(SATELLITE_LAYERS.esri.url, {
-      attribution: SATELLITE_LAYERS.esri.attribution,
-      maxZoom: SATELLITE_LAYERS.esri.maxZoom,
+    const isroLayer = L.tileLayer(SATELLITE_LAYERS.isro.url, {
+      attribution: SATELLITE_LAYERS.isro.attribution,
+      maxZoom: SATELLITE_LAYERS.isro.maxZoom,
     });
 
     // Store references
     baseLayersRef.current.set('dark', darkBase);
     baseLayersRef.current.set('light', lightBase);
     baseLayersRef.current.set('sentinel', sentinelLayer);
-    baseLayersRef.current.set('modis', modisLayer);
-    baseLayersRef.current.set('esri', esriLayer);
+    baseLayersRef.current.set('landsat', landsatLayer);
+    baseLayersRef.current.set('isro', isroLayer);
 
     // Add default layer
     darkBase.addTo(map);
@@ -130,8 +130,8 @@ export function SatelliteMap({
 
     const overlayMaps = {
       "Sentinel Layer": sentinelLayer,
-      "Landsat Layer": modisLayer,
-      "ISRO Terrain Layer": esriLayer,
+      "Landsat Layer": landsatLayer,
+      "ISRO Terrain Layer": isroLayer,
     };
 
     layerControlRef.current = L.control.layers(baseMaps, overlayMaps, {
