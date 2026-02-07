@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Custom breakpoint for extra small screens */
+@media (min-width: 480px) {
+  .xs\:block { display: block; }
+}
+
 /* SatFusion - Unified Satellite Intelligence Platform
    Design System: Dark space-tech aesthetic with satellite-specific accents
    Inspired by ESA Copernicus, NASA dashboards, and modern GIS platforms
