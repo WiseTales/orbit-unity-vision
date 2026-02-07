@@ -1,5 +1,5 @@
-import { useEffect, useRef } from 'react';
-import { MapContainer, TileLayer, ImageOverlay, useMap } from 'react-leaflet';
+import { useEffect } from 'react';
+import { MapContainer, TileLayer, ImageOverlay, useMap, useMapEvents } from 'react-leaflet';
 import { motion } from 'framer-motion';
 import type { SatelliteLayer, Coordinates } from '@/types/satellite';
 import 'leaflet/dist/leaflet.css';
@@ -24,30 +24,36 @@ function MapController({ center, zoom }: { center: Coordinates; zoom: number }) 
 
 // Component to handle click events
 function MapClickHandler({ onClick }: { onClick?: (coords: Coordinates) => void }) {
-  const map = useMap();
-  
-  useEffect(() => {
-    if (!onClick) return;
-    
-    const handleClick = (e: L.LeafletMouseEvent) => {
-      onClick({
-        latitude: e.latlng.lat,
-        longitude: e.latlng.lng,
-      });
-    };
-    
-    map.on('click', handleClick);
-    return () => {
-      map.off('click', handleClick);
-    };
-  }, [map, onClick]);
+  useMapEvents({
+    click: (e) => {
+      if (onClick) {
+        onClick({
+          latitude: e.latlng.lat,
+          longitude: e.latlng.lng,
+        });
+      }
+    },
+  });
   
   return null;
 }
 
-export function SatelliteMap({ center, zoom, layers, onMapClick }: SatelliteMapProps) {
-  const mapRef = useRef(null);
+// Separate component for satellite layer to avoid conditional rendering issues
+function SatelliteOverlay({ layer }: { layer: SatelliteLayer }) {
+  if (!layer.visible) {
+    return null;
+  }
   
+  return (
+    <ImageOverlay
+      url={layer.imageUrl}
+      bounds={layer.bounds}
+      opacity={layer.opacity}
+    />
+  );
+}
+
+export function SatelliteMap({ center, zoom, layers, onMapClick }: SatelliteMapProps) {
   return (
     <motion.div 
       initial={{ opacity: 0, scale: 0.98 }}
@@ -61,7 +67,6 @@ export function SatelliteMap({ center, zoom, layers, onMapClick }: SatelliteMapP
       </div>
       
       <MapContainer
-        ref={mapRef}
         center={[center.latitude, center.longitude]}
         zoom={zoom}
         className="h-full w-full"
@@ -71,23 +76,13 @@ export function SatelliteMap({ center, zoom, layers, onMapClick }: SatelliteMapP
         <MapController center={center} zoom={zoom} />
         <MapClickHandler onClick={onMapClick} />
         
-        {/* Dark-themed OpenStreetMap tiles */}
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
           url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
         />
         
-        {/* Satellite imagery overlays */}
         {layers.map((layer) => (
-          layer.visible && (
-            <ImageOverlay
-              key={layer.id}
-              url={layer.imageUrl}
-              bounds={layer.bounds}
-              opacity={layer.opacity}
-              className="transition-opacity duration-300"
-            />
-          )
+          <SatelliteOverlay key={layer.id} layer={layer} />
         ))}
       </MapContainer>
       
