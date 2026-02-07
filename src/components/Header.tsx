@@ -28,10 +28,10 @@ export function Header() {
           </div>
           <div className="hidden xs:block">
             <h1 className="text-lg md:text-xl font-bold text-foreground tracking-tight">
-              SatFusion
+              Orbit Unity Vision
             </h1>
             <p className="text-[10px] md:text-xs text-muted-foreground leading-tight">
-              Multi-Source Earth Observation Dashboard
+              Unified Analysis of Sentinel, Landsat & ISRO Satellite Data
             </p>
           </div>
         </div>
@@ -42,15 +42,15 @@ export function Header() {
           <div className="hidden lg:flex items-center gap-4 text-xs text-muted-foreground">
             <div className="flex items-center gap-2 px-2 py-1 rounded-full bg-sentinel/10 border border-sentinel/20">
               <div className="w-2 h-2 rounded-full bg-sentinel animate-pulse shadow-lg shadow-sentinel/50" />
-              <span className="text-sentinel font-medium">Sentinel-2</span>
+              <span className="text-sentinel font-medium">Sentinel</span>
             </div>
             <div className="flex items-center gap-2 px-2 py-1 rounded-full bg-landsat/10 border border-landsat/20">
               <div className="w-2 h-2 rounded-full bg-landsat animate-pulse shadow-lg shadow-landsat/50" />
-              <span className="text-landsat font-medium">MODIS</span>
+              <span className="text-landsat font-medium">Landsat</span>
             </div>
             <div className="flex items-center gap-2 px-2 py-1 rounded-full bg-isro/10 border border-isro/20">
               <div className="w-2 h-2 rounded-full bg-isro animate-pulse shadow-lg shadow-isro/50" />
-              <span className="text-isro font-medium">ESRI</span>
+              <span className="text-isro font-medium">ISRO</span>
             </div>
           </div>
           

@@ -8,9 +8,9 @@ interface MapInfoOverlayProps {
 }
 
 const dataSources = [
-  { name: 'Sentinel-2', icon: Satellite, color: 'text-sentinel', bg: 'bg-sentinel/10', border: 'border-sentinel/30' },
-  { name: 'MODIS Terra', icon: Globe2, color: 'text-landsat', bg: 'bg-landsat/10', border: 'border-landsat/30' },
-  { name: 'ESRI Imagery', icon: Radio, color: 'text-isro', bg: 'bg-isro/10', border: 'border-isro/30' },
+  { name: 'Sentinel', agency: 'ESA / Copernicus', icon: Satellite, color: 'text-sentinel', bg: 'bg-sentinel/10', border: 'border-sentinel/30' },
+  { name: 'Landsat', agency: 'NASA / USGS', icon: Globe2, color: 'text-landsat', bg: 'bg-landsat/10', border: 'border-landsat/30' },
+  { name: 'ISRO', agency: 'ISRO / Bhuvan', icon: Radio, color: 'text-isro', bg: 'bg-isro/10', border: 'border-isro/30' },
 ];
 
 export function MapInfoOverlay({ center, zoom }: MapInfoOverlayProps) {
@@ -66,7 +66,10 @@ export function MapInfoOverlay({ center, zoom }: MapInfoOverlayProps) {
                 className={`flex items-center gap-2 px-3 py-1.5 rounded-lg ${source.bg} border ${source.border} transition-all hover:scale-[1.02]`}
               >
                 <source.icon className={`h-3.5 w-3.5 ${source.color}`} />
-                <span className={`text-xs font-medium ${source.color}`}>{source.name}</span>
+                <div className="flex-1 min-w-0">
+                  <span className={`text-xs font-medium ${source.color}`}>{source.name}</span>
+                  <span className="text-[10px] text-muted-foreground ml-1.5">{source.agency}</span>
+                </div>
                 <div className={`ml-auto w-1.5 h-1.5 rounded-full ${source.color.replace('text-', 'bg-')} animate-pulse`} />
               </div>
             ))}

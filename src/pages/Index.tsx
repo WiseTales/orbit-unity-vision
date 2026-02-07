@@ -178,10 +178,13 @@ export default function Index() {
             >
               <ScrollArea className="h-full">
                 <div className="p-4">
-                  <div className="flex items-center gap-2 mb-4">
+                  <div className="flex items-center gap-2 mb-1">
                     <BarChart3 className="h-5 w-5 text-primary" />
                     <h2 className="text-lg font-semibold text-foreground">Unified Insights</h2>
                   </div>
+                  <p className="text-xs text-muted-foreground mb-4">
+                    Cross-satellite analysis and fused intelligence
+                  </p>
                   <InsightsPanel 
                     insights={insights}
                     fusedInsights={fusedInsights}

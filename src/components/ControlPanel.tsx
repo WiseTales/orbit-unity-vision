@@ -75,7 +75,7 @@ export function ControlPanel({ onAnalyze, isLoading, onCoordinatesChange }: Cont
           Analysis Parameters
         </h2>
         <p className="text-xs text-muted-foreground">
-          Configure coordinates, time range, and data sources
+          Step 1: Configure target location, observation window, and satellite sources below
         </p>
       </div>
       

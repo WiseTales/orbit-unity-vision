@@ -26,7 +26,7 @@ export function Footer() {
             </a>
           </span>
           <span className="hidden sm:inline">•</span>
-          <span className="text-muted-foreground/70">Public data sources – no login required</span>
+          <span className="text-muted-foreground/70">Orbit Unity Vision | Scalable with real satellite APIs</span>
         </div>
       </div>
     </motion.footer>

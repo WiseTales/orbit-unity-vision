@@ -124,14 +124,14 @@ export function SatelliteMap({
 
     // Create layer control
     const baseMaps = {
-      "🌙 Dark Theme": darkBase,
-      "☀️ Light Theme": lightBase,
+      "Dark Basemap": darkBase,
+      "Light Basemap": lightBase,
     };
 
     const overlayMaps = {
-      "🛰️ Sentinel-2 Cloudless": sentinelLayer,
-      "🌍 MODIS Terra": modisLayer,
-      "📡 ESRI World Imagery": esriLayer,
+      "Sentinel Layer": sentinelLayer,
+      "Landsat Layer": modisLayer,
+      "ISRO Terrain Layer": esriLayer,
     };
 
     layerControlRef.current = L.control.layers(baseMaps, overlayMaps, {

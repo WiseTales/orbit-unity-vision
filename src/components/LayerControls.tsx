@@ -47,7 +47,7 @@ export function LayerControls({ layers, onToggleVisibility, onOpacityChange }: L
         <h3 className="text-sm font-semibold text-foreground">Layer Controls</h3>
       </div>
       <p className="text-xs text-muted-foreground -mt-2">
-        Toggle visibility and adjust opacity for visual fusion
+        Step 2: Toggle visibility and adjust opacity to blend multi-source data
       </p>
       
       <div className="space-y-4">

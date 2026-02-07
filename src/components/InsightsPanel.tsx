@@ -276,13 +276,49 @@ export function InsightsPanel({ insights, fusedInsights }: InsightsPanelProps) {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="glass-panel rounded-xl p-6 text-center"
+        className="space-y-4"
       >
-        <Sparkles className="h-8 w-8 text-primary/50 mx-auto mb-3" />
-        <h3 className="text-sm font-semibold text-foreground mb-1">No Analysis Yet</h3>
-        <p className="text-xs text-muted-foreground">
-          Configure parameters and run analysis to see unified satellite insights
-        </p>
+        <div className="glass-panel rounded-xl p-6 text-center">
+          <Sparkles className="h-8 w-8 text-primary/50 mx-auto mb-3" />
+          <h3 className="text-sm font-semibold text-foreground mb-1">Ready to Analyze</h3>
+          <p className="text-xs text-muted-foreground">
+            Configure coordinates, select satellites, and click "Analyze & Fuse Data" to generate unified insights.
+          </p>
+        </div>
+
+        {/* Hackathon context: explain the problem and solution */}
+        <div className="glass-panel rounded-xl p-5 space-y-3">
+          <h4 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground flex items-center gap-2">
+            <AlertCircle className="h-3.5 w-3.5 text-primary" />
+            The Problem
+          </h4>
+          <p className="text-xs text-muted-foreground leading-relaxed">
+            Satellite data is fragmented across agencies (ESA, NASA, ISRO), each with different formats, portals, and access methods. Analysts waste time switching between platforms.
+          </p>
+        </div>
+
+        <div className="glass-panel rounded-xl p-5 space-y-3">
+          <h4 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground flex items-center gap-2">
+            <CheckCircle className="h-3.5 w-3.5 text-emerald-400" />
+            Our Solution
+          </h4>
+          <p className="text-xs text-muted-foreground leading-relaxed">
+            Orbit Unity Vision unifies Sentinel, Landsat, and ISRO data into a single analytical interface with layered visualization, data fusion, and cross-source insights.
+          </p>
+        </div>
+
+        <div className="glass-panel rounded-xl p-5 space-y-3">
+          <h4 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground flex items-center gap-2">
+            <Info className="h-3.5 w-3.5 text-landsat" />
+            How It Works
+          </h4>
+          <ol className="text-xs text-muted-foreground space-y-1.5 list-decimal list-inside leading-relaxed">
+            <li>Set geographic coordinates or click the map</li>
+            <li>Choose observation date range and satellites</li>
+            <li>Click Analyze to fetch and fuse multi-source data</li>
+            <li>Review layered overlays and unified insight cards</li>
+          </ol>
+        </div>
       </motion.div>
     );
   }
